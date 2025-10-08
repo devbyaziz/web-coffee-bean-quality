@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Kopi Nusantara</title>
+  <!-- Font rekomendasi: Playfair Display untuk judul, Merriweather untuk subjudul, Poppins untuk tombol -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Merriweather:wght@700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    body {
+      background: linear-gradient(135deg, #6f4e37 0%, #c7a17a 60%, #ede0d4 100%);
+      font-family: 'Merriweather', serif;
+      color: #6f4e37;
+      min-height: 100vh;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+    }
+    #three-container {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .center-content {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      pointer-events: auto;
+      text-align: center;
+      background: none;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      margin: 0 0 20px 0;
+      letter-spacing: 2px;
+      color: #6f4e37;
+      text-shadow: 0 2px 16px #ede0d4cc;
+      z-index: 2;
+    }
+    p {
+      font-family: 'Merriweather', serif;
+      font-size: 2rem;
+      color: #a47149;
+      margin: 0 0 40px 0;
+      z-index: 2;
+      text-shadow: 0 2px 8px #ede0d4cc;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 18px 48px;
+      background: #6f4e37;
+      color: #ede0d4;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.5rem;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 4px 16px #3e272355;
+      transition: background 0.3s, transform 0.2s;
+      margin-top: 20px;
+      text-decoration: none;
+      z-index: 2;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .cta-btn:hover {
+      background: #a47149;
+      color: #fff;
+      transform: scale(1.05);
+    }
+    footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      color: #a47149;
+      font-size: 1rem;
+      padding-bottom: 10px;
+      background: transparent;
+      margin: 0;
+      z-index: 3;
+      font-family: 'Poppins', sans-serif;
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 2.2rem; }
+      p { font-size: 1.1rem; }
+      .cta-btn { font-size: 1rem; padding: 12px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="center-content" style="z-index:3; position:relative;">
+    <h1 id="kopi-title" style="
+      color: #6f4e37;
+      font-size: 5.2rem;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 24px;
+      letter-spacing: 2px;
+      text-shadow: 0 4px 24px #ede0d4, 0 2px 8px #fff, 0 1px 0 #fff;
+      font-weight: 800;
+      display: inline-block;
+      border: none;
+    ">Bukan Sekedar Biji</h1>
+    <p id="kopi-desc" style="
+      color: #a47149;
+      font-size: 2.8rem;
+      font-family: 'Merriweather', serif;
+      margin-bottom: 0;
+      text-shadow: 0 2px 12px #ede0d4, 0 1px 0 #fff;
+      font-weight: 700;
+      display: inline-block;
+      border: none;
+    ">Ini Tentang Mutu, Rasa, dan Nilai.</p>
+  </div>
+  <div id="three-container" style="z-index:1;"></div>
+  <a href="index.html" class="cta-btn" id="kopi-btn" style="
+    position: absolute;
+    left: 50%;
+    bottom: 48px;
+    transform: translateX(-50%);
+    z-index: 4;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    padding: 16px 40px;
+    border-radius: 30px;
+    background: #6f4e37;
+    color: #ede0d4;
+    font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 16px #3e272355;
+    border: none;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
+    cursor: pointer;
+  ">Mulai Analisa Mutu</a>
+  <footer>
+    &copy; 2025 Kopi Nusantara. Semua hak cipta dilindungi.
+  </footer>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- Three.js -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.154.0/build/three.min.js"></script>
+  <script>
+    // GSAP Animasi
+    gsap.from("#kopi-title", {y: -80, opacity: 0, duration: 1, ease: "power3.out"});
+    gsap.from("#kopi-desc", {y: 40, opacity: 0, duration: 1, delay: 0.5, ease: "power2.out"});
+    gsap.from("#kopi-btn", {scale: 0, opacity: 0, duration: 0.8, delay: 1, ease: "back.out(1.7)"});
+
+    // Three.js 3D Coffee Bean (lebih realistis & interaktif)
+    let scene, camera, renderer, bean, groove;
+    const container = document.getElementById('three-container');
+
+    // Variabel untuk interaksi mouse/touch
+    let isDragging = false;
+    let previousMousePosition = { x: 0, y: 0 };
+    let targetRotation = { x: 0, y: 0 };
+    let currentRotation = { x: 0, y: 0 };
+
+    function createCoffeeTexture() {
+      const canvas = document.createElement('canvas');
+      canvas.width = 256;
+      canvas.height = 256;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#6f4e37';
+      ctx.fillRect(0, 0, 256, 256);
+      for (let i = 0; i < 80; i++) {
+        ctx.beginPath();
+        ctx.arc(
+          Math.random() * 256,
+          Math.random() * 256,
+          Math.random() * 16 + 2,
+          0, Math.PI * 2
+        );
+        ctx.fillStyle = `rgba(164,113,73,${Math.random() * 0.18 + 0.05})`;
+        ctx.fill();
+      }
+      return new THREE.CanvasTexture(canvas);
+    }
+
+    function deformGeometry(geometry) {
+      const pos = geometry.attributes.position;
+      for (let i = 0; i < pos.count; i++) {
+        let x = pos.getX(i);
+        let y = pos.getY(i);
+        let z = pos.getZ(i);
+        x += (Math.random() - 0.5) * 0.04;
+        y += (Math.random() - 0.5) * 0.04;
+        z += (Math.random() - 0.5) * 0.04;
+        pos.setXYZ(i, x, y, z);
+      }
+      pos.needsUpdate = true;
+      geometry.computeVertexNormals();
+    }
+
+    function initThree() {
+      scene = new THREE.Scene();
+      scene.background = null;
+
+      const width = container.offsetWidth;
+      const height = container.offsetHeight;
+
+      camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+      camera.position.set(0, 0, 3);
+
+      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(width, height);
+      renderer.setClearColor(0x000000, 0);
+      container.appendChild(renderer.domElement);
+
+      // Lighting
+      const hemiLight = new THREE.HemisphereLight(0xede0d4, 0x6f4e37, 1.2);
+      scene.add(hemiLight);
+
+      const dirLight = new THREE.DirectionalLight(0xffffff, 1.1);
+      dirLight.position.set(5, 10, 7.5);
+      scene.add(dirLight);
+
+      // Coffee bean body (ellipsoid, lebih organik)
+      const geometry = new THREE.SphereGeometry(0.7, 64, 48);
+      geometry.scale(1, 0.6, 0.45);
+      deformGeometry(geometry);
+
+      const texture = createCoffeeTexture();
+      const material = new THREE.MeshStandardMaterial({
+        map: texture,
+        color: 0x6f4e37,
+        roughness: 0.5,
+        metalness: 0.4,
+        bumpMap: texture,
+        bumpScale: 0.08
+      });
+      bean = new THREE.Mesh(geometry, material);
+      scene.add(bean);
+
+      // Coffee bean groove (cylinder)
+      const grooveGeometry = new THREE.CylinderGeometry(0.05, 0.05, 1.15, 32);
+      const grooveMaterial = new THREE.MeshStandardMaterial({
+        color: 0xa47149,
+        roughness: 0.5,
+        metalness: 0.1
+      });
+      groove = new THREE.Mesh(grooveGeometry, grooveMaterial);
+      groove.rotation.z = Math.PI / 2;
+      groove.position.y = 0;
+      scene.add(groove);
+
+      // Mouse event listeners (pointer-events diaktifkan sementara saat drag)
+      renderer.domElement.style.pointerEvents = 'auto';
+      renderer.domElement.addEventListener('mousedown', onMouseDown, false);
+      renderer.domElement.addEventListener('mousemove', onMouseMove, false);
+      renderer.domElement.addEventListener('mouseup', onMouseUp, false);
+      renderer.domElement.addEventListener('mouseleave', onMouseUp, false);
+      renderer.domElement.addEventListener('touchstart', onTouchStart, false);
+      renderer.domElement.addEventListener('touchmove', onTouchMove, false);
+      renderer.domElement.addEventListener('touchend', onTouchEnd, false);
+
+      window.addEventListener('resize', onWindowResize, false);
+      animate();
+    }
+
+    function onMouseDown(e) {
+      isDragging = true;
+      previousMousePosition = {
+        x: e.clientX,
+        y: e.clientY
+      };
+      container.style.pointerEvents = 'auto';
+    }
+
+    function onMouseMove(e) {
+      if (!isDragging) return;
+      const deltaMove = {
+        x: e.clientX - previousMousePosition.x,
+        y: e.clientY - previousMousePosition.y
+      };
+      targetRotation.y += deltaMove.x * 0.01;
+      targetRotation.x += deltaMove.y * 0.01;
+      targetRotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, targetRotation.x));
+      previousMousePosition = {
+        x: e.clientX,
+        y: e.clientY
+      };
+    }
+
+    function onMouseUp() {
+      isDragging = false;
+      container.style.pointerEvents = 'none';
+    }
+
+    // Touch events for mobile
+    function onTouchStart(e) {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        previousMousePosition = {
+          x: e.touches[0].clientX,
+          y: e.touches[0].clientY
+        };
+        container.style.pointerEvents = 'auto';
+      }
+    }
+
+    function onTouchMove(e) {
+      if (!isDragging || e.touches.length !== 1) return;
+      const deltaMove = {
+        x: e.touches[0].clientX - previousMousePosition.x,
+        y: e.touches[0].clientY - previousMousePosition.y
+      };
+      targetRotation.y += deltaMove.x * 0.01;
+      targetRotation.x += deltaMove.y * 0.01;
+      targetRotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, targetRotation.x));
+      previousMousePosition = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY
+      };
+    }
+
+    function onTouchEnd() {
+      isDragging = false;
+      container.style.pointerEvents = 'none';
+    }
+
+    function onWindowResize() {
+      const width = container.offsetWidth;
+      const height = container.offsetHeight;
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      // Biji kopi berputar otomatis jika tidak sedang drag
+      if (!isDragging) {
+        targetRotation.y += 0.005;
+      }
+      // Interpolasi rotasi agar smooth
+      currentRotation.x += (targetRotation.x - currentRotation.x) * 0.15;
+      currentRotation.y += (targetRotation.y - currentRotation.y) * 0.15;
+      if (bean && groove) {
+        bean.rotation.x = currentRotation.x;
+        bean.rotation.y = currentRotation.y;
+        groove.rotation.x = currentRotation.x;
+        groove.rotation.y = currentRotation.y;
+      }
+      renderer.render(scene, camera);
+    }
+
+    initThree();
+  </script>
+</body>
+</html>
